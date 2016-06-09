@@ -15,6 +15,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 /**
@@ -32,6 +33,9 @@ public class WidgetHostExampleActivity extends Activity {
 	AppWidgetHost mAppWidgetHost;
 
 	ViewGroup mainlayout;
+	LinearLayout layout1;
+	LinearLayout layout2;
+	LinearLayout layout3;
 
 	/**
 	 * Called on the creation of the activity.
@@ -42,11 +46,31 @@ public class WidgetHostExampleActivity extends Activity {
 		setContentView(R.layout.main);
 
 		mainlayout = (ViewGroup) findViewById(R.id.main_layout);
-		mainlayout.setOnClickListener(new View.OnClickListener() {
+
+		layout1 = (LinearLayout) findViewById(R.id.layout1);
+		layout1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				//Toast.makeText(WidgetHostExampleActivity.this, "onclick event", Toast.LENGTH_SHORT).show();
-				selectWidget();
+				Toast.makeText(WidgetHostExampleActivity.this, "layout1 clicked", Toast.LENGTH_SHORT).show();
+				//selectWidget();
+			}
+		});
+
+		layout2 = (LinearLayout) findViewById(R.id.layout2);
+		layout2.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Toast.makeText(WidgetHostExampleActivity.this, "layout2 clicked", Toast.LENGTH_SHORT).show();
+				//selectWidget();
+			}
+		});
+
+		layout3 = (LinearLayout) findViewById(R.id.layout3);
+		layout3.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Toast.makeText(WidgetHostExampleActivity.this, "layout3 clicked", Toast.LENGTH_SHORT).show();
+				//selectWidget();
 			}
 		});
 

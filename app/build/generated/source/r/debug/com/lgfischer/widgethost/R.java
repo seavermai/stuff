@@ -17,9 +17,12 @@ public final class R {
         public static final int APPWIDGET_HOST_ID=0x7f040000;
         public static final int REQUEST_CREATE_APPWIDGET=0x7f040001;
         public static final int REQUEST_PICK_APPWIDGET=0x7f040002;
-        public static final int addWidget=0x7f040004;
+        public static final int addWidget=0x7f040007;
+        public static final int layout1=0x7f040004;
+        public static final int layout2=0x7f040005;
+        public static final int layout3=0x7f040006;
         public static final int main_layout=0x7f040003;
-        public static final int removeWidget=0x7f040005;
+        public static final int removeWidget=0x7f040008;
     }
     public static final class layout {
         public static final int main=0x7f030000;
