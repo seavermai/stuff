@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.RemoteViews;
 import android.widget.Toast;
 
 /**
@@ -69,8 +70,8 @@ public class WidgetHostExampleActivity extends Activity {
 		layout3.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Toast.makeText(WidgetHostExampleActivity.this, "layout3 clicked", Toast.LENGTH_SHORT).show();
-				//selectWidget();
+				//Toast.makeText(WidgetHostExampleActivity.this, "layout3 clicked", Toast.LENGTH_SHORT).show();
+				selectWidget();
 			}
 		});
 
@@ -152,7 +153,11 @@ public class WidgetHostExampleActivity extends Activity {
 
 		AppWidgetHostView hostView = mAppWidgetHost.createView(this, appWidgetId, appWidgetInfo);
 		hostView.setAppWidget(appWidgetId, appWidgetInfo);
-		mainlayout.addView(hostView);
+		//mainlayout.addView(hostView);
+
+		layout3.addView(hostView);
+//		layout3.setPadding(0, 0, 0, 0);
+
 
 		Log.i(TAG, "The widget size is: " + appWidgetInfo.minWidth + "*" + appWidgetInfo.minHeight);
 	}
