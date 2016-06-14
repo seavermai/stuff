@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 7
+    compileSdkVersion 19
     buildToolsVersion "23.0.3"
 
     defaultConfig {
         applicationId "com.lgfischer.widgethost"
-        minSdkVersion 7
-        targetSdkVersion 7
+        minSdkVersion 19
+        targetSdkVersion 19
     }
 
     buildTypes {
@@ -17,3 +17,7 @@ android {
         }
     }
 }
+dependencies {
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+}
+

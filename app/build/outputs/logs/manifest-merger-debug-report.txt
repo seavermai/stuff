@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:2:1-23:12
+ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:2:1-27:12
 	xmlns:android
 		ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:2:11-69
 	package
@@ -17,6 +17,9 @@ ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main
 		INJECTED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml
 uses-sdk
 ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:7:5-43
+MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:22.2.0] C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		INJECTED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml
@@ -25,7 +28,10 @@ ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main
 		INJECTED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml
 application
-ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:9:5-21:19
+ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:9:5-25:19
+MERGED from [com.google.android.gms:play-services-appindexing:8.1.0] C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-appindexing\8.1.0\AndroidManifest.xml:19:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:22.2.0] C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.0\AndroidManifest.xml:22:5-20
 	android:label
 		ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:11:9-41
 	android:icon
@@ -46,3 +52,10 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:18:17-77
 	android:name
 		ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:18:27-74
+meta-data#com.google.android.gms.version
+ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:22:9-24:69
+MERGED from [com.google.android.gms:play-services-basement:8.1.0] C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\8.1.0\AndroidManifest.xml:21:9-23:69
+	android:name
+		ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:23:13-58
+	android:value
+		ADDED from C:\Users\Seaver\AndroidStudioProjects\WidgetHostExample1\app\src\main\AndroidManifest.xml:24:13-66

@@ -8,6 +8,7 @@ import android.appwidget.AppWidgetHostView;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProviderInfo;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -19,12 +20,15 @@ import android.widget.LinearLayout;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import com.google.android.gms.appindexing.Action;
+import com.google.android.gms.appindexing.AppIndex;
+import com.google.android.gms.common.api.GoogleApiClient;
+
 /**
  * This activity serves as an example of how to search, add and remove widgets
  * from a window.
- * 
+ *
  * @author Leonardo Garcia Fischer (http://coderender.blogspot.com/)
- * 
  */
 public class WidgetHostExampleActivity extends Activity {
 
@@ -37,7 +41,27 @@ public class WidgetHostExampleActivity extends Activity {
 	ViewGroup layout1;
 	ViewGroup layout2;
 	ViewGroup layout3;
-	ViewGroup clickedView;
+
+	/*
+		Use of Global Variable:
+		http://stackoverflow.com/questions/2139134/how-to-send-an-object-from-one-android-activity-to-another-using-intents
+
+		For situations where you know the activities are running in the same process, you can just
+		share data through globals. For example, you could have a global HashMap<String,
+		WeakReference<MyInterpreterState>> and when you make a new MyInterpreterState come up with
+		a unique name for it and put it in the hash map; to send that state to another activity,
+		simply put the unique name into the hash map and when the second activity is started it can
+		retrieve the MyInterpreterState from the hash map with the name it receives.
+	 */
+	ViewGroup mClickedView;
+
+
+	/**
+	 * ATTENTION: This was auto-generated to implement the App Indexing API.
+	 * See https://g.co/AppIndexing/AndroidStudio for more information.
+	 */
+	private GoogleApiClient client;
+
 	/**
 	 * Called on the creation of the activity.
 	 */
@@ -77,6 +101,9 @@ public class WidgetHostExampleActivity extends Activity {
 
 		mAppWidgetManager = AppWidgetManager.getInstance(this);
 		mAppWidgetHost = new AppWidgetHost(this, R.id.APPWIDGET_HOST_ID);
+		// ATTENTION: This was auto-generated to implement the App Indexing API.
+		// See https://g.co/AppIndexing/AndroidStudio for more information.
+		client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
 	}
 
 	/**
@@ -84,26 +111,11 @@ public class WidgetHostExampleActivity extends Activity {
 	 * the result of the activity.
 	 */
 	void selectWidget(ViewGroup view) {
-		clickedView = view;
+		mClickedView = view;
 		int appWidgetId = this.mAppWidgetHost.allocateAppWidgetId();
 		Intent pickIntent = new Intent(AppWidgetManager.ACTION_APPWIDGET_PICK);
 		pickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
-		addEmptyData(pickIntent);
 		startActivityForResult(pickIntent, R.id.REQUEST_PICK_APPWIDGET);
-	}
-
-	/**
-	 * This avoids a bug in the com.android.settings.AppWidgetPickActivity,
-	 * which is used to select widgets. This just adds empty extras to the
-	 * intent, avoiding the bug.
-	 * 
-	 * See more: http://code.google.com/p/android/issues/detail?id=4272
-	 */
-	void addEmptyData(Intent pickIntent) {
-		ArrayList<AppWidgetProviderInfo> customInfo = new ArrayList<AppWidgetProviderInfo>();
-		pickIntent.putParcelableArrayListExtra(AppWidgetManager.EXTRA_CUSTOM_INFO, customInfo);
-		ArrayList<Bundle> customExtras = new ArrayList<Bundle>();
-		pickIntent.putParcelableArrayListExtra(AppWidgetManager.EXTRA_CUSTOM_EXTRAS, customExtras);
 	}
 
 	/**
@@ -156,7 +168,7 @@ public class WidgetHostExampleActivity extends Activity {
 		hostView.setAppWidget(appWidgetId, appWidgetInfo);
 		//mainlayout.addView(hostView);
 
-		clickedView.addView(hostView);
+		mClickedView.addView(hostView);
 //		layout3.setPadding(0, 0, 0, 0);
 
 
@@ -170,7 +182,23 @@ public class WidgetHostExampleActivity extends Activity {
 	@Override
 	protected void onStart() {
 		super.onStart();
+		// ATTENTION: This was auto-generated to implement the App Indexing API.
+		// See https://g.co/AppIndexing/AndroidStudio for more information.
+		client.connect();
 		mAppWidgetHost.startListening();
+		// ATTENTION: This was auto-generated to implement the App Indexing API.
+		// See https://g.co/AppIndexing/AndroidStudio for more information.
+		Action viewAction = Action.newAction(
+				Action.TYPE_VIEW, // TODO: choose an action type.
+				"WidgetHostExample Page", // TODO: Define a title for the content shown.
+				// TODO: If you have web page content that matches this app activity's content,
+				// make sure this auto-generated web page URL is correct.
+				// Otherwise, set the URL to null.
+				Uri.parse("http://host/path"),
+				// TODO: Make sure this auto-generated app URL is correct.
+				Uri.parse("android-app://com.lgfischer.widgethost/http/host/path")
+		);
+		AppIndex.AppIndexApi.start(client, viewAction);
 	}
 
 	/**
@@ -179,7 +207,23 @@ public class WidgetHostExampleActivity extends Activity {
 	@Override
 	protected void onStop() {
 		super.onStop();
+		// ATTENTION: This was auto-generated to implement the App Indexing API.
+		// See https://g.co/AppIndexing/AndroidStudio for more information.
+		Action viewAction = Action.newAction(
+				Action.TYPE_VIEW, // TODO: choose an action type.
+				"WidgetHostExample Page", // TODO: Define a title for the content shown.
+				// TODO: If you have web page content that matches this app activity's content,
+				// make sure this auto-generated web page URL is correct.
+				// Otherwise, set the URL to null.
+				Uri.parse("http://host/path"),
+				// TODO: Make sure this auto-generated app URL is correct.
+				Uri.parse("android-app://com.lgfischer.widgethost/http/host/path")
+		);
+		AppIndex.AppIndexApi.end(client, viewAction);
 		mAppWidgetHost.stopListening();
+		// ATTENTION: This was auto-generated to implement the App Indexing API.
+		// See https://g.co/AppIndexing/AndroidStudio for more information.
+		client.disconnect();
 	}
 
 	/**
@@ -197,12 +241,12 @@ public class WidgetHostExampleActivity extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Log.i(TAG, "Menu selected is: " + item.getTitle() + "/" + item.getItemId() + "/" + R.id.addWidget);
 		switch (item.getItemId()) {
-		case R.id.addWidget:
-			selectWidget(mainlayout);
-			return true;
-		case R.id.removeWidget:
-			removeWidgetMenuSelected();
-			return false;
+			case R.id.addWidget:
+				selectWidget(mainlayout);
+				return true;
+			case R.id.removeWidget:
+				removeWidgetMenuSelected();
+				return false;
 		}
 		return super.onOptionsItemSelected(item);
 	}
