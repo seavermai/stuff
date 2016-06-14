@@ -34,10 +34,10 @@ public class WidgetHostExampleActivity extends Activity {
 	AppWidgetHost mAppWidgetHost;
 
 	ViewGroup mainlayout;
-	LinearLayout layout1;
-	LinearLayout layout2;
-	LinearLayout layout3;
-
+	ViewGroup layout1;
+	ViewGroup layout2;
+	ViewGroup layout3;
+	ViewGroup clickedView;
 	/**
 	 * Called on the creation of the activity.
 	 */
@@ -48,30 +48,30 @@ public class WidgetHostExampleActivity extends Activity {
 
 		mainlayout = (ViewGroup) findViewById(R.id.main_layout);
 
-		layout1 = (LinearLayout) findViewById(R.id.layout1);
+		layout1 = (ViewGroup) findViewById(R.id.layout1);
 		layout1.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Toast.makeText(WidgetHostExampleActivity.this, "layout1 clicked", Toast.LENGTH_SHORT).show();
-				//selectWidget();
+//				Toast.makeText(WidgetHostExampleActivity.this, "layout1 clicked", Toast.LENGTH_SHORT).show();
+				selectWidget(layout1);
 			}
 		});
 
-		layout2 = (LinearLayout) findViewById(R.id.layout2);
+		layout2 = (ViewGroup) findViewById(R.id.layout2);
 		layout2.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-				Toast.makeText(WidgetHostExampleActivity.this, "layout2 clicked", Toast.LENGTH_SHORT).show();
-				//selectWidget();
+//				Toast.makeText(WidgetHostExampleActivity.this, "layout2 clicked", Toast.LENGTH_SHORT).show();
+				selectWidget(layout2);
 			}
 		});
 
-		layout3 = (LinearLayout) findViewById(R.id.layout3);
+		layout3 = (ViewGroup) findViewById(R.id.layout3);
 		layout3.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
 				//Toast.makeText(WidgetHostExampleActivity.this, "layout3 clicked", Toast.LENGTH_SHORT).show();
-				selectWidget();
+				selectWidget(layout3);
 			}
 		});
 
@@ -83,7 +83,8 @@ public class WidgetHostExampleActivity extends Activity {
 	 * Launches the menu to select the widget. The selected widget will be on
 	 * the result of the activity.
 	 */
-	void selectWidget() {
+	void selectWidget(ViewGroup view) {
+		clickedView = view;
 		int appWidgetId = this.mAppWidgetHost.allocateAppWidgetId();
 		Intent pickIntent = new Intent(AppWidgetManager.ACTION_APPWIDGET_PICK);
 		pickIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId);
@@ -155,7 +156,7 @@ public class WidgetHostExampleActivity extends Activity {
 		hostView.setAppWidget(appWidgetId, appWidgetInfo);
 		//mainlayout.addView(hostView);
 
-		layout3.addView(hostView);
+		clickedView.addView(hostView);
 //		layout3.setPadding(0, 0, 0, 0);
 
 
@@ -197,7 +198,7 @@ public class WidgetHostExampleActivity extends Activity {
 		Log.i(TAG, "Menu selected is: " + item.getTitle() + "/" + item.getItemId() + "/" + R.id.addWidget);
 		switch (item.getItemId()) {
 		case R.id.addWidget:
-			selectWidget();
+			selectWidget(mainlayout);
 			return true;
 		case R.id.removeWidget:
 			removeWidgetMenuSelected();
